@@ -29,6 +29,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
+      title: "Development",
       template: "index.html",
     }),
   ],

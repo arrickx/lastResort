@@ -1,11 +1,12 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const path = require('path');
+const path = require("path");
 
-app.use('/build', express.static(path.join(__dirname, '../build')));
-// serve index.html on the route '/'
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-});
-
+if (process.env.NODE_ENV === "production") {
+  app.use("/build", express.static(path.join(__dirname, "../build")));
+  // serve index.html on the route '/'
+  app.get("/", (req, res) => {
+    return res.status(200).sendFile(path.join(__dirname, "../index.html"));
+  });
+}
 app.listen(3000);
