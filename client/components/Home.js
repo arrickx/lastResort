@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
-function Home() {
+export function Home() {
   function sayHello() {
     fetch("/api/")
       .then((res) => res.json())
@@ -18,5 +18,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

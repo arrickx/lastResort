@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate} from "react-router-dom";
 
-function Signup() {
+export function Signup() {
   let navigate = useNavigate();
   return (
     <div>
@@ -10,5 +10,3 @@ function Signup() {
     </div>
   );
 }
-
-export default Signup;

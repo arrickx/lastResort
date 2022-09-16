@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import Signup from "./Signup";
-import Login from "./Login";
-import Post from "./Post";
-import Page from "./Page.js";
+import {Home} from "./Home";
+import {Signup} from "./Signup";
+import {Login} from "./Login";
+import {Post} from "./Post";
+import {Page} from "./Page.js";
+import {Error} from "./Error.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/post/:id" element={<Page />} />
         <Route path="/signup" element={<Signup />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );

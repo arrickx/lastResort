@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export function Login() {
+export function Error() {
   return (
     <div>
-      <h1>login</h1>
+      <h1>url not found</h1>
     </div>
   );
 }

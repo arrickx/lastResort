@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Post() {
+export function Post() {
   return (
     <>
       <h1>Post</h1>
@@ -11,5 +11,3 @@ function Post() {
     </>
   );
 }
-
-export default Post;
