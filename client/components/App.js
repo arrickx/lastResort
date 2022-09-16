@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 
 function App() {
   function sayHello() {
+    fetch('/api/')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
     console.log('hello click');
   }
 
