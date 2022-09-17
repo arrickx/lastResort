@@ -37,11 +37,9 @@ export function Signup() {
       fetch("/api/signup/", signupReq).then((response) => {
         if (response.status === 200) {
           console.log("signup success!"); // need to route to another page
-          return response.json();
         }
         if (response.status === 406) {
           alertBox("please select another username.");
-          console.log("Error: duplicate username");
         }
       });
     } else {
