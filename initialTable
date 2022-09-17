@@ -1,6 +1,5 @@
 CREATE TABLE public."user"(
 _id SERIAL PRIMARY KEY NOT NULL,
-username varchar NOT NULL UNIQUE,
-password varchar NOT NULL
+username varchar NOT NULL UNIQUE CHECK (username <> ''),
+password varchar NOT NULL CHECK (password <> '')
 )
-
