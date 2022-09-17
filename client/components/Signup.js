@@ -38,11 +38,12 @@ export function Signup() {
         .then((response) => {
           if (response.status === 200) {
             console.log("signup success!"); // need to route to another page
+            return response.json();
           }
           if (response.status === 406) {
             alertBox("please select another username.");
+            return ("Error: duplicate username")
           }
-          return response.json();
         })
         .then((data) => {
           console.log("response from signup ->", data);
