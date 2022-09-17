@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export function Home() {
   function sayHello() {
-    fetch("/api/")
+    fetch("/api")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

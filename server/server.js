@@ -3,6 +3,8 @@ const app = express();
 const path = require("path");
 const apiRouter = require('./routes/api');
 
+app.use(express.json());
+
 if (process.env.NODE_ENV === "production") {
   app.use("/build", express.static(path.join(__dirname, "../build")));
   // serve index.html on the route '/'

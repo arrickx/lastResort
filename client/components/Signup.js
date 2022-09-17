@@ -9,6 +9,20 @@ export function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`username: ${username} \npassword: ${password}`);
+
+    const signupReq = {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({username:username, password:password})
+    };
+
+    fetch('/api/signup/', signupReq)
+      .then(response => response.json())
+      .then(data => {
+        console.log('response from signup ->', data)
+      })
   };
 
   return (
