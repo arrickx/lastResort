@@ -8,21 +8,33 @@ export function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`username: ${username} \npassword: ${password}`);
+    // console.log(`username: ${username} \npassword: ${password}`); // test for submit button 
 
-    const signupReq = {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({username:username, password:password})
-    };
-
-    fetch('/api/signup/', signupReq)
-      .then(response => response.json())
-      .then(data => {
-        console.log('response from signup ->', data)
-      })
+    if (username && password) {
+      const signupReq = {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({username:username, password:password})
+      };
+  
+      fetch('/api/signup/', signupReq)
+        .then(response => {
+          if (response.status === 200) {
+            console.log('signup success!');
+          } 
+          if (response.status === 406) {
+            alert('please select another username.');
+          }
+          return response.json();
+          })
+        .then(data => {
+          console.log('response from signup ->', data)
+        })
+    } else {
+      alert('please insert both username and password')
+    }
   };
 
   return (

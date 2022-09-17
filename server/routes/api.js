@@ -8,7 +8,7 @@ router.get("/", projectController.test, (req, res) =>
   res.status(200).json([...res.locals.data.rows])
 );
 
-router.post("/signup",projectController.signup, (req, res) => 
+router.post("/signup",projectController.checkDuplicate, projectController.signup, (req, res) => 
   res.status(200).json(res.locals.data)
 );
 
