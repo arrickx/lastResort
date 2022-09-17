@@ -1,0 +1,6 @@
+CREATE TABLE public."user"(
+_id SERIAL PRIMARY KEY NOT NULL,
+username varchar NOT NULL UNIQUE,
+password varchar NOT NULL
+)
+
