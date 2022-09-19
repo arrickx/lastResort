@@ -9,6 +9,7 @@ sessionController.isLoggedIn = async (req, res, next) => {
         return res.status(401).json("sorry token not verified");
       }
 
+      res.locals.data = 'is logged in!';
       return next();
     }
   );

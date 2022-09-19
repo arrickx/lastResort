@@ -22,4 +22,8 @@ router.post("/login", validateLogin, setSSIDCookie, (req, res) =>
   res.status(200).json(res.locals.data)
 );
 
+router.get("/auth", isLoggedIn, (req, res) => {
+  res.status(200).json(res.locals.data)
+})
+
 module.exports = router;
