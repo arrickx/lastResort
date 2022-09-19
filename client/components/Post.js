@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 
 export function Post() {
   const navigate = useNavigate();
+
+  const logout = () => {
+    fetch("/api/logout")
+    .then(res => {
+      console.log(res.json());
+    })
+    navigate('/')
+  }
+
   useEffect(() => {
     fetch("/api/auth")
     .then(res => {
@@ -17,6 +26,8 @@ export function Post() {
   return (
     <div>
       <h1>Post</h1>
+      <button onClick={ logout }>logout</button>
+      <br />
       <Link to="/post/1">Post 1</Link>
       <br />
       <Link to="/post/2">Post 2</Link>

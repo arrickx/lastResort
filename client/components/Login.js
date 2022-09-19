@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
@@ -33,6 +35,7 @@ export function Login() {
       fetch("/api/login/", loginReq).then((response) => {
         if (response.status === 200) {
           console.log("login success!"); // need to route to another page
+          navigate('/post')
         }
         if (response.status === 406) {
           alertBox("username or password incorrect");

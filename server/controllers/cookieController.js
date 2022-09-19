@@ -12,4 +12,11 @@ cookieController.setSSIDCookie = async(req, res, next) => {
 
   return next();
 }
+
+cookieController.logout = (req, res, next) => {
+  res.clearCookie('ssid')
+  res.locals.data = 'logout successfuly'
+  return next();
+}
+
 module.exports = cookieController;
