@@ -8,11 +8,11 @@ export function PostLayout() {
 
   useEffect(() => {
     fetch("/api/auth").then((res) => {
-      if (res.status === 200) console.log("auth!");
+      // if (res.status === 200) console.log("auth!");
       if (res.status === 400) navigate("/login");
       if (res.status === 401) navigate("/signup");
     });
-  });
+  }, []);
 
   const logout = () => {
     fetch("/api/logout").then((res) => {
