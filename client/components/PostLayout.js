@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 export function PostLayout() { 
   const navigate = useNavigate();
+  const user_id = Cookies.get('user_id');
 
   useEffect(() => {
     fetch("/api/auth").then((res) => {
@@ -19,10 +21,16 @@ export function PostLayout() {
     navigate("/");
   };
 
+  const newPost = () => {
+    navigate("/post/new");
+  }
+
   return (
   <div>
+    <button onClick={newPost}> new </button>
+    <br />
     <button onClick={logout}>logout</button>
-    <Outlet />
+    <Outlet context={[user_id]}/>
   </div>
   )
 }

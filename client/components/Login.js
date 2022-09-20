@@ -21,8 +21,8 @@ export function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("hello login->");
-    console.log(`username: ${username} \npassword: ${password}`);
+    // console.log("hello login->");
+    // console.log(`username: ${username} \npassword: ${password}`);
 
     if (username && password) {
       const loginReq = {

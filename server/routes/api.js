@@ -6,6 +6,7 @@ const { testController } = require("../controllers/projectController");
 const { checkDuplicate, signup } = require("../controllers/signupController");
 const { validateLogin } = require("../controllers/loginController");
 const { setSSID, removeSSID, isLoggedIn } = require("../controllers/sessionController");
+const { newPost } = require("../controllers/pageController")
 
 const router = express.Router();
 
@@ -26,6 +27,10 @@ router.get("/auth", isLoggedIn, (req, res) => {
 })
 
 router.get("/logout", removeSSID, (req, res) => {
+  res.status(200).json(res.locals.data)
+})
+
+router.post("/new", newPost,(req, res) => {
   res.status(200).json(res.locals.data)
 })
 
