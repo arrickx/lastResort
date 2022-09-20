@@ -7,7 +7,7 @@ sessionController.setSSID = async(req, res, next) => {
   const ssid = jwt.sign({username: req.body.username}, process.env.PRIVATE_KEY, { expiresIn: 10 }); // 10 sec
   
   res.cookie('ssid', ssid, { httpOnly: true, secure: true});
-  res.cookie('user_id', res.locals.id, { httpOnly: true, secure: true});
+  res.cookie('user_id', res.locals.id, { secure: true});
   res.locals.ssid = ssid;
 
   return next();
