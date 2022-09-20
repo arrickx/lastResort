@@ -6,6 +6,7 @@ import {Login} from "./Login";
 import {Post} from "./Post";
 import {Page} from "./Page.js";
 import {Error} from "./Error.js";
+import { PostLayout } from "./PostLayout";
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/post" element={<Post />} />
-        <Route path="/post/:id" element={<Page />} />
+        <Route path="/post" element={<PostLayout/>}>
+          <Route index element={<Post />}/>
+          <Route path=":id" element={<Page />} />
+        </Route>
         <Route path="/signup" element={<Signup />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="*" element={<Error />} />

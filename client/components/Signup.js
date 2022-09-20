@@ -75,8 +75,6 @@ export function Signup() {
         <br />
         <input type="submit" value="Sign up" />
       </form>
-      <br />
-      <button onClick={() => navigate("/")}>back home</button>
     </div>
   );
 }
