@@ -2,11 +2,12 @@ const jwt = require("jsonwebtoken");
 const sessionController = {};
 
 sessionController.setSSID = async(req, res, next) => {
+  // console.log('id from signup ->', res.locals.id);
   // console.log('setSSIDCookie .env ->',process.env.PRIVATE_KEY) // print the key
   const ssid = jwt.sign({username: req.body.username}, process.env.PRIVATE_KEY, { expiresIn: 10 }); // 10 sec
   
   res.cookie('ssid', ssid, { httpOnly: true, secure: true});
-
+  res.cookie('user_id', res.locals.id, { httpOnly: true, secure: true});
   res.locals.ssid = ssid;
 
   return next();
@@ -28,6 +29,7 @@ sessionController.isLoggedIn = async (req, res, next) => {
 
 sessionController.removeSSID = (req, res, next) => {
   res.clearCookie('ssid')
+  res.clearCookie('user_id')
   res.locals.data = 'logout successfuly'
   return next();
 }

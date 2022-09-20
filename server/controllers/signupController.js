@@ -22,6 +22,7 @@ signupController.signup = (req, res, next) => {
   const values = [username, password];
   db.query(text, values)
     .then((data) => {
+      res.locals.id = data.rows[0]['_id'];
       res.locals.data = data.rows[0]; // success signup and send back to react fetch
       next();
     })

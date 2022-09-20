@@ -16,6 +16,7 @@ loginController.validateLogin = async (req, res, next) => {
     // console.log(output.rows); // contain username and password info
     if (password === authPassword) {
       console.log("password match");
+      res.locals.id = output.rows[0]['_id'];
       res.locals.data = req.body;
       next();
     } else {
