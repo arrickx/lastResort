@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 export function NewPost() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
@@ -33,6 +34,7 @@ export function NewPost() {
       fetch("/api/new/", newPostRequest).then((response) => {
         if (response.status === 200) {
           console.log("new post success!"); // need to route to another page
+          navigate('/post')
         }});
     }else {
       alertBox("please input title or story.");
