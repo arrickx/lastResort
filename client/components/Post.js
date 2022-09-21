@@ -16,15 +16,13 @@ export function Post() {
   const testPosts = state.map((el, i) => {
     const {_id, title, text, user_id} = el;
     return (
-      <Link to={`/post/${_id}`} key={_id}>
-        <span style={{"display": "block"}}>
-          <div>
+      <Link to={`/post/${_id}`} key={_id} state={{data: el}}>
+          <div style={{"display": "block"}}>
             <p>post: {_id} user: {user_id}</p>
             <p>{title}</p>
             <p style={{"whiteSpace": "pre-wrap"}}>{text}</p>
             <br />
           </div>
-        </span>
       </Link>
     )
   })

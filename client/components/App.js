@@ -8,6 +8,7 @@ import { Page } from "./Page.js";
 import { Error } from "./Error.js";
 import { PostLayout } from "./PostLayout";
 import { NewPost } from "./NewPost";
+import { EditPost } from "./EditPost";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/post" element={<PostLayout />}>
           <Route index element={<Post />} />
           <Route path=":id" element={<Page />} />
+          <Route path=":id/edit" element={<EditPost />} />
           <Route path="new" element={<NewPost />} />
         </Route>
         <Route path="/signup" element={<Signup />} />

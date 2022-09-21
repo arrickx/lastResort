@@ -1,10 +1,22 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 export function Page() {
-  const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation()
+  const { data } = location.state
+  const {_id, title, text, user_id} = data;
+
   return (
-    <h1>Page {id}</h1>
+    <div>
+      <h1>Post {_id}</h1>
+      <h1>{title}</h1>
+      <h2>{text}</h2>
+      <h2>{user_id}</h2>
+
+      <button onClick={() => navigate(`./edit`)}>edit</button>
+      <button>delete</button>
+    </div>
   );
 }
 

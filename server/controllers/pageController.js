@@ -8,10 +8,10 @@ pageController.getAllPosts = (req, res, next) => {
     res.locals.data = data.rows;
     next();
   });
-}
+};
 
-pageController.newPost = (req, res , next) => {
-  const {title, text, user_id} = req.body
+pageController.newPost = (req, res, next) => {
+  const { title, text, user_id } = req.body;
   // console.log(req.body);
   // console.log('title ->', title);
   // console.log('text ->',text);
@@ -32,6 +32,52 @@ pageController.newPost = (req, res , next) => {
 
   res.locals.data = req.body;
   return next();
-}
+};
+
+pageController.getPost = (req, res, next) => {
+  const text = `SELECT * FROM public.post WHERE _id=$1`;
+  const values = [req.params.id];
+  // console.log('post id from request ->',req.params.id)
+  db.query(text, values).then((data) => {
+    res.locals.data = data.rows;
+    next();
+  });
+  // res.locals.data = req.body;
+  // return next();
+};
+
+pageController.updatePost = (req, res, next) => {
+  const { title, text, post_id } = req.body;
+  // console.log('title ->', title);
+  // console.log('text ->',text);
+  // console.log('post_id ->',post_id);
+  const sql = `UPDATE public.post SET title=$1, text=$2 WHERE _id=$3 RETURNING *`;
+  const values = [title, text, post_id]
+
+  db.query(sql, values).then((data) => {
+    res.locals.data = data.rows;
+    next();
+  });
+
+  // res.locals.data = req.body;
+  // next();
+};
+
+pageController.deletePost = (req, res, next) => {
+  const { post_id } = req.body;
+  // console.log('title ->', title);
+  // console.log('text ->',text);
+  // console.log('post_id ->',post_id);
+  // const sql = `UPDATE public.post SET title=$1, text=$2 WHERE _id=$3 RETURNING *`;
+  // const values = [title, text, post_id]
+
+  // db.query(sql, values).then((data) => {
+  //   res.locals.data = data.rows;
+  //   next();
+  // });
+
+  res.locals.data = req.body;
+  next();
+};
 
 module.exports = pageController;
