@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export function Post() {
@@ -17,12 +16,16 @@ export function Post() {
   const testPosts = state.map((el, i) => {
     const {_id, title, text, user_id} = el;
     return (
-      <div key={_id}>
-        <p>post: {_id} user: {user_id}</p>
-        <p>{title}</p>
-        <p style={{"whiteSpace": "pre-wrap"}}>{text}</p>
-        <br />
-      </div>
+      <Link to={`/post/${_id}`} key={_id}>
+        <span style={{"display": "block"}}>
+          <div>
+            <p>post: {_id} user: {user_id}</p>
+            <p>{title}</p>
+            <p style={{"whiteSpace": "pre-wrap"}}>{text}</p>
+            <br />
+          </div>
+        </span>
+      </Link>
     )
   })
 
@@ -31,9 +34,6 @@ export function Post() {
       <h1>Post</h1>
       <br />
       <div>{testPosts}</div>
-      <Link to="/post/1">Post 1</Link>
-      <br />
-      <Link to="/post/2">Post 2</Link>
     </div>
   );
 }

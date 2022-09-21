@@ -33,7 +33,7 @@ export function NewPost() {
 
       fetch("/api/new/", newPostRequest).then((response) => {
         if (response.status === 200) {
-          console.log("new post success!"); // need to route to another page
+          // console.log("new post success!"); // need to route to another page
           navigate('/post')
         }});
     }else {
