@@ -30,7 +30,7 @@ router.get("/logout", removeSSID, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 
-router.post("/new", newPost,(req, res) => {
+router.post("/new", isLoggedIn, newPost,(req, res) => {
   res.status(200).json(res.locals.data)
 })
 

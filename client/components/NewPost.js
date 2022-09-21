@@ -27,7 +27,7 @@ export function NewPost() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title: title, text: text, user_id }), // user_id is already an object
+        body: JSON.stringify({ title: title, text: text, user_id }), // user_id is already a
       };
 
       fetch("/api/new/", newPostRequest).then((response) => {
