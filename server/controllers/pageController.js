@@ -2,6 +2,14 @@ const db = require("../models/projectModels");
 
 const pageController = {};
 
+pageController.getAllPosts = (req, res, next) => {
+  const text = `SELECT * FROM public.post ORDER BY (_id) desc`;
+  db.query(text).then((data) => {
+    res.locals.data = data.rows;
+    next();
+  });
+}
+
 pageController.newPost = (req, res , next) => {
   const {title, text, user_id} = req.body
   // console.log(req.body);

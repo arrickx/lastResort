@@ -6,7 +6,7 @@ const { testController } = require("../controllers/projectController");
 const { checkDuplicate, signup } = require("../controllers/signupController");
 const { validateLogin } = require("../controllers/loginController");
 const { setSSID, removeSSID, isLoggedIn } = require("../controllers/sessionController");
-const { newPost } = require("../controllers/pageController")
+const { newPost, getAllPosts } = require("../controllers/pageController")
 
 const router = express.Router();
 
@@ -34,4 +34,7 @@ router.post("/new", isLoggedIn, newPost,(req, res) => {
   res.status(200).json(res.locals.data)
 })
 
+router.get("/feed", getAllPosts,(req, res) => {
+  res.status(200).json(res.locals.data)
+})
 module.exports = router;
