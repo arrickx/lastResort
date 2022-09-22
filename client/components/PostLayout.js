@@ -11,6 +11,7 @@ export function PostLayout() {
       // if (res.status === 200) console.log("auth!");
       if (res.status === 400) navigate("/login");
       if (res.status === 401) navigate("/signup");
+      console.clear()
     });
   }, []);
 
@@ -21,13 +22,10 @@ export function PostLayout() {
     navigate("/");
   };
 
-  const newPost = () => {
-    navigate("/post/new");
-  }
-
   return (
   <div>
-    <button onClick={newPost}> new </button>
+    <button onClick={() => navigate("/")}>Home</button>
+    <button onClick={() => navigate("/post/new")}> new </button>
     <br />
     <button onClick={logout}>logout</button>
     <Outlet context={[user_id]}/>

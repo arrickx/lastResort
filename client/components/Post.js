@@ -18,7 +18,7 @@ export function Post() {
     return (
       <Link to={`/post/${_id}`} key={_id} state={{data: el}}>
           <div style={{"display": "block"}}>
-            <p>post: {_id} user: {user_id}</p>
+            <p>post: {_id} creator: {user_id}</p>
             <p>{title}</p>
             <p style={{"whiteSpace": "pre-wrap"}}>{text}</p>
             <br />

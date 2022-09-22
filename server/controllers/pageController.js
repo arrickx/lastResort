@@ -47,25 +47,29 @@ pageController.getPost = (req, res, next) => {
 };
 
 pageController.updatePost = (req, res, next) => {
-  const { title, text, post_id } = req.body;
+  const { title, text, post_id, creator, currentUserId } = req.body;
   // console.log('title ->', title);
   // console.log('text ->',text);
   // console.log('post_id ->',post_id);
+  // console.log('creator ->',creator);
+  // console.log('currentUserId ->',currentUserId);
   const sql = `UPDATE public.post SET title=$1, text=$2 WHERE _id=$3 RETURNING *`;
-  const values = [title, text, post_id]
+  const values = [title, text, post_id];
 
+  if (creator !== currentUserId && currentUserId !== null) res.status(401).json('unable to edit');
   db.query(sql, values).then((data) => {
     res.locals.data = data.rows;
     next();
   });
 
-  // res.locals.data = req.body;
-  // next();
 };
 
 pageController.deletePost = (req, res, next) => {
-  const { post_id } = req.body;
-  console.log('post_id ->',post_id);
+  const { post_id, creator, currentUserId } = req.body;
+  // console.log("creator ->", creator);
+  // console.log("currentUserId ->", currentUserId);
+  // console.log("post_id ->", post_id);
+  if (creator !== currentUserId && currentUserId !== null) res.status(401).json('unable to delete');
   const text = `DELETE FROM public.post WHERE _id=$1 RETURNING *`;
   const values = [post_id];
 
@@ -75,8 +79,6 @@ pageController.deletePost = (req, res, next) => {
     next();
   });
 
-  // res.locals.data = req.body;
-  // next();
 };
 
 module.exports = pageController;
