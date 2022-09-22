@@ -70,7 +70,7 @@ pageController.deletePost = (req, res, next) => {
   const values = [post_id];
 
   db.query(text, values).then((data) => {
-    
+    if (data.rows.length !== 1) return res.sendStatus(410)
     res.locals.data = data.rows;
     next();
   });

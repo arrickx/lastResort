@@ -13,14 +13,18 @@ export function Page() {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({ post_id: _id }), 
+      body: JSON.stringify({ post_id: _id }),
     };
 
     fetch(`/api/feed/${_id}`, deletePostRequest)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        navigate('/post')
+      .then((response) => {
+        if (response.status === 410) {
+          console.log('item deleted before your request.');
+          return navigate("/post");
+        } else {
+          console.log(response.json());
+          navigate("/post");
+        }
       });
   }
 
@@ -32,7 +36,7 @@ export function Page() {
       <h2>{user_id}</h2>
 
       <button onClick={() => navigate(`./edit`)}>edit</button>
-      <button onClick={ pageDelete }>delete</button>
+      <button onClick={pageDelete}>delete</button>
     </div>
   );
 }
