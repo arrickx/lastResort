@@ -1,6 +1,7 @@
-require('dotenv').config()
+require('dotenv').config();
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./client/index.js",
@@ -22,10 +23,18 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.css$/i,
-        use: ["style-loader","css-loader","sass-loader"],
-      },
+    //   {
+    //     test: /\.css$/,
+    //     use: [
+    //         MiniCssExtractPlugin.loader,
+    //         "css-loader",
+    //         "postcss-loader",
+    //     ],
+    // },
+      // {
+      //   test: /\.css$/i,
+      //   use: ["style-loader","css-loader"],
+      // },
     ],
   },
   plugins: [
@@ -33,6 +42,7 @@ module.exports = {
       title: "Development",
       template: "index.html",
     }),
+    // new MiniCssExtractPlugin(),
   ],
   devServer: {
     historyApiFallback: true,

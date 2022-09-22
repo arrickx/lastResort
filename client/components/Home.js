@@ -22,7 +22,7 @@ export function Home() {
 
   return (
     <div>
-      <h1>home</h1>
+      <h1 className="text-blue-500">home</h1>
       <button onClick={() => navigate('/signup')}>signup</button>
       <button onClick={() => navigate('/login')}>login</button>
       <br />
