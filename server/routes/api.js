@@ -6,7 +6,7 @@ const { testController } = require("../controllers/projectController");
 const { checkDuplicate, signup } = require("../controllers/signupController");
 const { validateLogin } = require("../controllers/loginController");
 const { setSSID, removeSSID, isLoggedIn } = require("../controllers/sessionController");
-const { newPost, getAllPosts, getPost, updatePost } = require("../controllers/pageController")
+const { newPost, getAllPosts, getPost, updatePost, deletePost } = require("../controllers/pageController")
 
 const router = express.Router();
 
@@ -46,7 +46,7 @@ router.patch("/feed/:id", updatePost, (req, res) => {
   res.status(200).json(res.locals.data);
 });
 
-router.delete("/feed/:id", , (req, res) => {
+router.delete("/feed/:id", deletePost, (req, res) => {
   res.status(200).json(res.locals.data);
 });
 

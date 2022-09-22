@@ -65,19 +65,18 @@ pageController.updatePost = (req, res, next) => {
 
 pageController.deletePost = (req, res, next) => {
   const { post_id } = req.body;
-  // console.log('title ->', title);
-  // console.log('text ->',text);
-  // console.log('post_id ->',post_id);
-  // const sql = `UPDATE public.post SET title=$1, text=$2 WHERE _id=$3 RETURNING *`;
-  // const values = [title, text, post_id]
+  console.log('post_id ->',post_id);
+  const text = `DELETE FROM public.post WHERE _id=$1 RETURNING *`;
+  const values = [post_id];
 
-  // db.query(sql, values).then((data) => {
-  //   res.locals.data = data.rows;
-  //   next();
-  // });
+  db.query(text, values).then((data) => {
+    
+    res.locals.data = data.rows;
+    next();
+  });
 
-  res.locals.data = req.body;
-  next();
+  // res.locals.data = req.body;
+  // next();
 };
 
 module.exports = pageController;

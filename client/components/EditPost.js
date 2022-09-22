@@ -42,7 +42,7 @@ export function EditPost() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title: title, text: text, post_id: id }), // user_id is already a
+        body: JSON.stringify({ title: title, text: text, post_id: id }), 
       };
 
       // console.log(editPostRequest);
