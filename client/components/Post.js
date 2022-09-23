@@ -8,33 +8,40 @@ export function Post() {
   const [state, setState] = useState([]);
 
   useEffect(() => {
-    fetch("/api/feed").then((res) => res.json())
-    .then((data) => {
-      // console.log(data[0])
-      setState(data);
-    }
-    );
+    fetch("/api/feed")
+      .then((res) => res.json())
+      .then((data) => {
+        setState(data);
+      });
   }, []);
 
   const allPosts = state.map((el, i) => {
-    const {_id, title, text, user_id} = el;
+    const { _id, title, text, user_id } = el;
     return (
-        <div key={_id} onClick={() => {setButtonPopup(true); setPage(el)}}>
-          <div className="flex flex-col justify-center items-center py-4">
-            <div className=" text-start flex flex-col justify-center items-center py-4 w-3/5">              
-              <h1 className=" text-xl">{title}</h1>
-              <p className=" whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
-              <p>post: {_id} creator: {user_id}</p>
-            </div>
+      <div
+        key={_id}
+        onClick={() => {
+          setButtonPopup(true);
+          setPage(el);
+        }}
+      >
+        <div className="flex flex-col justify-center items-center py-4">
+          <div className=" text-start flex flex-col justify-center items-center py-4 w-3/5">
+            <h1 className=" text-xl">{title}</h1>
+            <p className=" whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
+            <p>
+              post: {_id} creator: {user_id}
+            </p>
           </div>
         </div>
-    )
-  })
+      </div>
+    );
+  });
 
   return (
     <div>
       <h1 className="text-center">Post</h1>
-      
+
       {/* loading status */}
       {/* {!state[0] && 
       <div className="ml-40">
@@ -51,9 +58,8 @@ export function Post() {
 
       <div>{allPosts}</div>
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <Page data={page}/>
+        <Page data={page} />
       </Popup>
-
     </div>
   );
 }

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, useOutletContext, useLocation } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
-export function EditPost() {
-  const {state} = useLocation();
-  const { post_id } = state; 
+export function EditPost(props) {
   const navigate = useNavigate();
   const currentUserId = useOutletContext();
   const [title, setTitle] = useState("");
@@ -11,8 +9,7 @@ export function EditPost() {
   const [creator, setCreator] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [msg, setMsg] = useState("");
-  // const { id } = useParams(); // post id
-  // const id = props.post_id;
+  const post_id = props.post_id;
 
   const alertBox = (input) => {
     // clear the username and password field
@@ -27,18 +24,15 @@ export function EditPost() {
     fetch(`/api/feed/${post_id}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         const { title, text, user_id } = data[0];
-        // console.log(title, text, user_id)
-        if ( user_id === currentUserId[0]) {
+        if (user_id === currentUserId[0]) {
           setTitle(title);
           setText(text);
           setCreator(user_id);
         } else {
-          console.log('unauthorized');
-          navigate('/') // back to the previous page
+          console.log("unauthorized");
+          navigate("/"); // back to the previous page
         }
-
       });
   }, []);
 
@@ -52,16 +46,22 @@ export function EditPost() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title: title, text: text, post_id: post_id, currentUserId: currentUserId[0], creator: creator }), 
+        body: JSON.stringify({
+          title: title,
+          text: text,
+          post_id: post_id,
+          currentUserId: currentUserId[0],
+          creator: creator,
+        }),
       };
 
       // console.log(editPostRequest);
 
       fetch(`/api/feed/${post_id}`, editPostRequest).then((response) => {
-        if (response.status === 401) navigate('/'); 
+        if (response.status === 401) navigate("/");
         if (response.status === 200) {
           console.log("edit post success!"); // need to route to another page
-          navigate('/')
+          navigate("/");
         } else {
           alertBox("please input title or story.");
         }
@@ -88,7 +88,11 @@ export function EditPost() {
           onChange={(e) => setText(e.target.value)}
         />
         <br />
-        <input type="submit" value="Update" />
+        <input
+          className="my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
+          type="submit"
+          value="Update"
+        />
       </form>
     </div>
   );
