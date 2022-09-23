@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-export function NewPost() {
+export function NewPost(props) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [msg, setMsg] = useState("");
-  const [user_id] = useOutletContext();
+  // const [user_id] = useOutletContext();
 
   const alertBox = (input) => {
     // clear the username and password field
@@ -28,13 +28,14 @@ export function NewPost() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title: title, text: text, user_id }), // user_id is already a
+        // body: JSON.stringify({ title: title, text: text, user_id }), // user_id is already a
+        body: JSON.stringify({ title: title, text: text, user_id:props.user_id}),
       };
 
       fetch("/api/new/", newPostRequest).then((response) => {
         if (response.status === 200) {
           // console.log("new post success!"); // need to route to another page
-          navigate('/post')
+          navigate('/')
         }});
     }else {
       alertBox("please input title or story.");
