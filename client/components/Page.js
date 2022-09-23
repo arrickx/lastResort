@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useParams, useLocation, useNavigate, useOutletContext } from "react-router-dom";
 
-export function Page() {
+export function Page(props) {
   const navigate = useNavigate();
   const location = useLocation();
   const currentUserId = useOutletContext();
-  const { data } = location.state;
-  const { _id, title, text, user_id } = data; // user_id is creator id
+  // const { data } = location.state;
+  // const { _id, title, text, user_id } = data; // user_id is creator id
+  const { _id, title, text, user_id } = props.data;
 
 
   function pageDelete() {

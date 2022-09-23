@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Popup from "./popup";
+import { Page } from "./Page";
 
 export function Post() {
+  const [buttonPopup, setButtonPopup] = useState(false);
+  const [page, setPage] = useState({});
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -16,22 +19,41 @@ export function Post() {
   const allPosts = state.map((el, i) => {
     const {_id, title, text, user_id} = el;
     return (
-      <Link to={`/post/${_id}`} key={_id} state={{data: el}}>
+        <div key={_id} onClick={() => {setButtonPopup(true); setPage(el)}}>
           <div className="flex flex-col justify-center items-center py-4">
-            <div className="flex flex-col justify-center items-center py-4 w-3/5">              
+            <div className=" text-start flex flex-col justify-center items-center py-4 w-3/5">              
+              <h1 className=" text-xl">{title}</h1>
+              <p className=" whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
               <p>post: {_id} creator: {user_id}</p>
-              <p >{title}</p>
-              <p className="text-center whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
             </div>
           </div>
-      </Link>
+        </div>
     )
   })
 
   return (
     <div>
       <h1 className="text-center">Post</h1>
+      
+      {/* loading status */}
+      {/* {!state[0] && 
+      <div className="ml-40">
+        <div role="status" class="max-w-sm animate-pulse transform transition-all duration-150 ease-out">
+            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+            <span class="sr-only">Loading...</span>
+        </div>
+      </div>} */}
+
       <div>{allPosts}</div>
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <Page data={page}/>
+      </Popup>
+
     </div>
   );
 }
