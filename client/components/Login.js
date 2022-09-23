@@ -62,7 +62,7 @@ export function Login() {
             />
             <br />
             <input
-              className="text-center border-b-2 border-b-orange-300 outline-none my-4"
+              className="text-center border-b-2 border-b-orange-300 my-4"
               type="password"
               placeholder="password"
               autoComplete="on"

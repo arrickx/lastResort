@@ -55,6 +55,7 @@ export function PostLayout() {
           </button>
         </div>
       </div>
+      
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup} >
         <NewPost user_id={user_id}/>
       </Popup>
