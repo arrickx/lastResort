@@ -57,6 +57,7 @@ export function NewPost(props) {
         className="flex flex-col justify-center items-center"
       >
         <input
+          autoFocus
           className="text-center border-b-2 w-2/5 border-b-orange-300 outline-none my-4 mt-10"
           type="text"
           placeholder="title"

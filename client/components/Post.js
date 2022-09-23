@@ -25,13 +25,11 @@ export function Post() {
           setPage(el);
         }}
       >
-        <div className="flex flex-col justify-center items-center py-4">
-          <div className=" text-start flex flex-col justify-center items-center py-4 w-3/5">
+        <div className="flex flex-col justify-center items-center py-4 ">
+          <div className="flex flex-col justify-center py-4 w-3/5 max-w-2xl px-8 mx-auto text-white bg-white rounded-xl shadow-xl dark:bg-orange-400 cursor-pointer">
             <h1 className=" text-xl">{title}</h1>
             <p className=" whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
-            <p>
-              post: {_id} creator: {user_id}
-            </p>
+            
           </div>
         </div>
       </div>
