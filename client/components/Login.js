@@ -49,10 +49,16 @@ export function Login() {
   return (
     <div>
       <div>
-        {isAlertVisible && <h3 className="text-center font-bold text-orange-300">{msg}</h3>}
-        <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
+        {isAlertVisible && (
+          <h3 className="text-center font-bold text-orange-300">{msg}</h3>
+        )}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col justify-center items-center"
+        >
           <label>
             <input
+              autofocus
               className="text-center border-b-2 border-b-orange-300 outline-none my-4 mt-10"
               type="text"
               placeholder="username"
@@ -62,7 +68,7 @@ export function Login() {
             />
             <br />
             <input
-              className="text-center border-b-2 border-b-orange-300 my-4"
+              className="text-center border-b-2 border-b-orange-300 outline-none my-4"
               type="password"
               placeholder="password"
               autoComplete="on"
