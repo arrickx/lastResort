@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, useOutletContext } from "react-router-dom";
+import { useNavigate, useParams, useOutletContext, useLocation } from "react-router-dom";
 
 export function EditPost() {
+  const {state} = useLocation();
+  const { post_id } = state; 
   const navigate = useNavigate();
   const currentUserId = useOutletContext();
   const [title, setTitle] = useState("");
@@ -9,7 +11,8 @@ export function EditPost() {
   const [creator, setCreator] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [msg, setMsg] = useState("");
-  const { id } = useParams(); // post id
+  // const { id } = useParams(); // post id
+  // const id = props.post_id;
 
   const alertBox = (input) => {
     // clear the username and password field
@@ -21,7 +24,7 @@ export function EditPost() {
   };
 
   useEffect(() => {
-    fetch(`/api/feed/${id}`)
+    fetch(`/api/feed/${post_id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -33,7 +36,7 @@ export function EditPost() {
           setCreator(user_id);
         } else {
           console.log('unauthorized');
-          navigate(-1) // back to the previous page
+          navigate('/') // back to the previous page
         }
 
       });
@@ -49,16 +52,16 @@ export function EditPost() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title: title, text: text, post_id: id, currentUserId: currentUserId[0], creator: creator }), 
+        body: JSON.stringify({ title: title, text: text, post_id: post_id, currentUserId: currentUserId[0], creator: creator }), 
       };
 
       // console.log(editPostRequest);
 
-      fetch(`/api/feed/${id}`, editPostRequest).then((response) => {
-        if (response.status === 401) navigate(-1); 
+      fetch(`/api/feed/${post_id}`, editPostRequest).then((response) => {
+        if (response.status === 401) navigate('/'); 
         if (response.status === 200) {
           console.log("edit post success!"); // need to route to another page
-          navigate('/post')
+          navigate('/')
         } else {
           alertBox("please input title or story.");
         }

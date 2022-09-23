@@ -8,7 +8,7 @@ export function Page(props) {
   // const { data } = location.state;
   // const { _id, title, text, user_id } = data; // user_id is creator id
   const { _id, title, text, user_id } = props.data;
-
+  const [state, setState] = useState(_id)
 
   function pageDelete() {
     const deletePostRequest = {
@@ -23,10 +23,10 @@ export function Page(props) {
       .then((response) => {
         if (response.status === 410) {
           console.log('item deleted before your request.');
-          return navigate("/post");
+          return navigate("/");
         } else {
           console.log(response.json());
-          navigate("/post");
+          navigate("/");
         }
       });
   }
@@ -37,10 +37,10 @@ export function Page(props) {
       <h1>{title}</h1>
       <h2>{text}</h2>
       <h2>creator: {user_id}</h2>
-      <h2>current user:{currentUserId}</h2>
+      <h2>current user:{currentUserId}</h2> 
 
       { (user_id === currentUserId[0]) && <div>
-        <button onClick={() => navigate(`./edit`)}>edit</button>
+        <button onClick={() => navigate(`./${state}/edit`, { state: { post_id: state }})}>edit</button>
         <button onClick={pageDelete}>delete</button>
       </div>
       }
