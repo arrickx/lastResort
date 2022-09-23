@@ -17,10 +17,12 @@ export function Post() {
     const {_id, title, text, user_id} = el;
     return (
       <Link to={`/post/${_id}`} key={_id} state={{data: el}}>
-          <div className="block py-4">
-            <p>post: {_id} creator: {user_id}</p>
-            <p>{title}</p>
-            <p className="whitespace-pre-wrap">{text}</p>
+          <div className="flex flex-col justify-center items-center py-4">
+            <div className="flex flex-col justify-center items-center py-4 w-3/5">              
+              <p>post: {_id} creator: {user_id}</p>
+              <p >{title}</p>
+              <p className="text-center whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
+            </div>
           </div>
       </Link>
     )
@@ -28,7 +30,7 @@ export function Post() {
 
   return (
     <div>
-      <h1>Post</h1>
+      <h1 className="text-center">Post</h1>
       <div>{allPosts}</div>
     </div>
   );
