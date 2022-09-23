@@ -60,7 +60,7 @@ export function Signup() {
         >
           <label>
             <input
-              autofocus
+              autoFocus
               className="text-center border-b-2 border-b-orange-300 outline-none my-4 mt-10"
               type="text"
               placeholder="username"
