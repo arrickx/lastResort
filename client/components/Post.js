@@ -16,20 +16,19 @@ export function Post() {
   }, []);
 
   const allPosts = state.map((el, i) => {
-    const { _id, title, text, user_id } = el;
+    const { _id, title, text } = el;
     return (
-      <div
-        key={_id}
-        onClick={() => {
-          setButtonPopup(true);
-          setPage(el);
-        }}
-      >
+      <div key={_id}>
         <div className="flex flex-col justify-center items-center py-4 ">
-          <div className="flex flex-col justify-center py-4 w-3/5 max-w-2xl px-8 mx-auto text-white bg-white rounded-xl shadow-xl dark:bg-orange-400 cursor-pointer">
-            <h1 className=" text-xl">{title}</h1>
+          <div
+            onClick={() => {
+              setButtonPopup(true);
+              setPage(el);
+            }}
+            className="flex flex-col justify-center py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl shadow-xl bg-orange-400 cursor-pointer"
+          >
+            <h1 className=" text-3xl">{title}</h1>
             <p className=" whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
-            
           </div>
         </div>
       </div>
@@ -38,7 +37,7 @@ export function Post() {
 
   return (
     <div>
-      <h1 className="text-center">Post</h1>
+      <h1 className="text-4xl text-center text-orange-400">Post</h1>
 
       {/* loading status */}
       {/* {!state[0] && 

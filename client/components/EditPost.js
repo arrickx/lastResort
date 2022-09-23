@@ -73,7 +73,7 @@ export function EditPost(props) {
     <div>
       <h1>Edit</h1>
       {isAlertVisible && <h3>{msg}</h3>}
-      <form onSubmit={handleSubmit}>
+      <form className="text-xl" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="title"

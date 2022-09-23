@@ -56,7 +56,7 @@ export function Signup() {
         )}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col justify-center items-center"
+          className="text-xl flex flex-col justify-center items-center"
         >
           <label>
             <input

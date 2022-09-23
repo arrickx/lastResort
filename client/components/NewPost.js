@@ -54,11 +54,11 @@ export function NewPost(props) {
       )}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center"
+        className="text-xl flex flex-col justify-center items-center"
       >
         <input
           autoFocus
-          className="text-center border-b-2 w-2/5 border-b-orange-300 outline-none my-4 mt-10"
+          className="border-b-2 w-3/5 border-b-orange-300 outline-none my-2 mt-10"
           type="text"
           placeholder="title"
           value={title}
@@ -66,7 +66,7 @@ export function NewPost(props) {
         />
         <br />
         <textarea
-        className="caret-orange-400 text-center w-1/2 h-40 rounded-lg border border-orange-300 focus:outline-orange-400"
+        className="caret-orange-400 w-3/5 h-40 rounded-lg border border-orange-300 focus:outline-orange-400"
           type="text"
           placeholder="say something..."
           value={text}
