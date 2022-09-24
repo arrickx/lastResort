@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSpring, animated } from "@react-spring/web";
 import Popup from "./popup";
 import { Page } from "./Page";
 
@@ -6,6 +7,23 @@ export function Post() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [page, setPage] = useState({});
   const [state, setState] = useState([]);
+
+  const popupStyles = useSpring({
+    opacity: buttonPopup ? 1 : 0,
+    config: { duration: "300" },
+  })
+  
+  const styles = useSpring({
+    from: {
+      opacity: 0,
+      y: 50,
+    },
+    to: {
+      opacity: 1,
+      y: 0,
+    },
+    config: { duration: "500" },
+  });
 
   useEffect(() => {
     fetch("/api/feed")
@@ -18,7 +36,10 @@ export function Post() {
   const allPosts = state.map((el, i) => {
     const { _id, title, text, create_time } = el;
 
-    const ts = new Date(create_time).toLocaleString('en-US', {hour: '2-digit', minute:'2-digit'}) ;
+    const ts = new Date(create_time).toLocaleString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
     return (
       <div key={_id}>
@@ -32,7 +53,9 @@ export function Post() {
           >
             <h1 className="text-3xl">{title}</h1>
             {/* <h1>{ts}</h1> */}
-            <p className="text-lg whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
+            <p className="text-lg whitespace-pre-wrap h-18 line-clamp-3">
+              {text}
+            </p>
           </div>
         </div>
       </div>
@@ -57,10 +80,14 @@ export function Post() {
         </div>
       </div>} */}
 
-      <div>{allPosts}</div>
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <Page data={page} />
-      </Popup>
+      <animated.div style={styles}>{allPosts}</animated.div>
+      {/* <div>{allPosts}</div> */}
+
+      <animated.div style={popupStyles}>
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <Page data={page} />
+        </Popup>
+      </animated.div>
     </div>
   );
 }

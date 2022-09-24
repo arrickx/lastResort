@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import { useSpring, animated } from "@react-spring/web";
 import Popup from "./popup";
 import { EditPost } from "./EditPost";
 
@@ -9,6 +10,11 @@ export function Page(props) {
   const currentUserId = useOutletContext();
   const { _id, title, text, user_id } = props.data;
   const [state, setState] = useState(_id);
+
+  const styles = useSpring({
+    opacity: buttonPopup ? 1 : 0,
+    config: { duration: "300" },
+  });
 
   function pageDelete() {
     const deletePostRequest = {
@@ -58,9 +64,11 @@ export function Page(props) {
           </button>
         </div>
       )}
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <EditPost post_id={state} />
-      </Popup>
+      <animated.div style={styles}>
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <EditPost post_id={state} />
+        </Popup>
+      </animated.div>
     </div>
   );
 }

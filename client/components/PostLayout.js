@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useSpring, animated } from "@react-spring/web";
 import Cookies from "js-cookie";
 import logo from "../src/logo.png";
 import Popup from "./popup";
@@ -10,6 +11,11 @@ export function PostLayout() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const navigate = useNavigate();
   const user_id = Cookies.get("user_id");
+
+  const styles = useSpring({
+    opacity: buttonPopup ? 1 : 0,
+    config: { duration: "300" },
+  });
 
   useEffect(() => {
     fetch("/api/auth").then((res) => {
@@ -56,9 +62,11 @@ export function PostLayout() {
         </div>
       </div>
       
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup} >
-        <NewPost user_id={user_id}/>
-      </Popup>
+      <animated.div style={styles}>
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup} >
+          <NewPost user_id={user_id}/>
+        </Popup>
+      </animated.div>
 
       <Outlet context={[user_id]} />
     </div>
