@@ -52,7 +52,9 @@ export function Post() {
               setButtonPopup(true);
               setPage(el);
             }}
-            className="flex flex-col py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl shadow-xl bg-gradient-to-r from-orange-400 to-yellow-400 cursor-pointer transition duration-500 ease-in-out  hover:scale-110"
+            className="flex flex-col py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl 
+            shadow-xl bg-gradient-to-r from-orange-400 to-yellow-400 cursor-pointer transition 
+            duration-500 ease-in-out  hover:scale-110"
           >
             <div className="text-3xl">{title}</div>
             <div className=" self-end">{ts}</div>

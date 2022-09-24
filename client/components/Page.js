@@ -42,20 +42,28 @@ export function Page(props) {
 
   return (
     <div className="text-xl">
-      
-        <h1 className="my-2 mx-4 mt-6 text-3xl text-orange-400" >{title}</h1>
-        <h2 className="my-4 mx-4 whitespace-pre-wrap text-orange-400">{text}</h2>
+      <h1 className="my-2 mx-4 mt-6 text-3xl text-orange-400">{title}</h1>
+      <h2
+        className="my-4 mx-4 whitespace-pre-wrap text-orange-400 max-h-96 overflow-y-auto 
+        scrollbar-thin scrollbar-thumb-orange-200 scrollbar-track-gray-100 scrollbar-thumb-rounded"
+      >
+        {text}
+      </h2>
 
       {user_id === currentUserId[0] && (
         <div>
           <button
-            className="transition duration-500 ease-in-out shadow-md my-4 mx-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
+            className="transition duration-500 ease-in-out shadow-md my-4 mx-4 text-center 
+            items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 
+            text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
             onClick={() => setButtonPopup(true)}
           >
             edit
           </button>
           <button
-            className="transition duration-500 ease-in-out shadow-md my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
+            className="transition duration-500 ease-in-out shadow-md my-4 text-center items-center 
+            justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base 
+            font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
             onClick={pageDelete}
           >
             delete
