@@ -44,7 +44,7 @@ export function PostLayout() {
         />
         <div className="flex space-x-10">
           <button
-            className="items-center shadow-md justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
+            className="items-center shadow-md justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none transition duration-500 ease-in-out"
             // onClick={() => navigate("/post/new")}
             onClick={() => {
               setButtonPopup(true);
@@ -54,7 +54,7 @@ export function PostLayout() {
           </button>
           <br />
           <button
-            className="items-center shadow-md justify-center rounded-xl border-2 border-orange-400 bg-white-400 px-4 py-2 text-base font-medium text-orange-400 shadow-s hover:text-orange-500 focus:outline-none"
+            className="items-center shadow-md justify-center rounded-xl border-2 border-orange-400 bg-white-400 px-4 py-2 text-base font-medium text-orange-400 shadow-s hover:text-orange-500 focus:outline-none transition duration-500 ease-in-out"
             onClick={logout}
           >
             logout

@@ -78,7 +78,7 @@ export function Login() {
             <br />
           </label>
           <input
-            className="shadow-md my-4 text-center items-center justify-center rounded-xl border border-transparent focus:outline-none bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
+            className="transition duration-500 ease-in-out shadow-md my-4 text-center items-center justify-center rounded-xl border border-transparent focus:outline-none bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
             type="submit"
             value="Login"
           />

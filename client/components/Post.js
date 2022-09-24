@@ -11,8 +11,8 @@ export function Post() {
   const popupStyles = useSpring({
     opacity: buttonPopup ? 1 : 0,
     config: { duration: "300" },
-  })
-  
+  });
+
   const styles = useSpring({
     from: {
       opacity: 0,
@@ -49,10 +49,9 @@ export function Post() {
               setButtonPopup(true);
               setPage(el);
             }}
-            className="flex flex-col justify-center py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl shadow-xl bg-orange-400 cursor-pointer"
+            className="flex flex-col justify-center py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl shadow-xl bg-gradient-to-r from-orange-400 to-yellow-400 cursor-pointer transition duration-500 ease-in-out  hover:scale-110"
           >
             <h1 className="text-3xl">{title}</h1>
-            {/* <h1>{ts}</h1> */}
             <p className="text-lg whitespace-pre-wrap h-18 line-clamp-3">
               {text}
             </p>
@@ -66,23 +65,7 @@ export function Post() {
     <div>
       <h1 className="text-4xl text-center text-orange-400 mb-3">Post</h1>
 
-      {/* loading status */}
-      {/* {!state[0] && 
-      <div className="ml-40">
-        <div role="status" class="max-w-sm animate-pulse transform transition-all duration-150 ease-out">
-            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-            <span class="sr-only">Loading...</span>
-        </div>
-      </div>} */}
-
       <animated.div style={styles}>{allPosts}</animated.div>
-      {/* <div>{allPosts}</div> */}
-
       <animated.div style={popupStyles}>
         <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
           <Page data={page} />

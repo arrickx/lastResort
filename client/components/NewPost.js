@@ -74,7 +74,7 @@ export function NewPost(props) {
         />
         <br />
         <input
-          className="my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 shadow-md text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
+          className="transition duration-500 ease-in-out my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 shadow-md text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
           type="submit"
           value="Post"
         />
