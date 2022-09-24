@@ -3,7 +3,7 @@ const db = require("../models/projectModels");
 const pageController = {};
 
 pageController.getAllPosts = (req, res, next) => {
-  const text = `SELECT * FROM public.post ORDER BY (_id) desc`;
+  const text = `SELECT * FROM public.post WHERE create_time > NOW() - interval '2 hours' ORDER BY (_id) desc`;
   db.query(text).then((data) => {
     res.locals.data = data.rows;
     next();

@@ -36,7 +36,10 @@ export function Post() {
   const allPosts = state.map((el, i) => {
     const { _id, title, text, create_time } = el;
 
-    const ts = new Date(create_time).toLocaleString("en-US", {
+    const date = new Date(create_time);
+    date.setHours(date.getHours() -4)
+    // console.log(date);
+    const ts = date.toLocaleString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
     });
@@ -49,9 +52,10 @@ export function Post() {
               setButtonPopup(true);
               setPage(el);
             }}
-            className="flex flex-col justify-center py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl shadow-xl bg-gradient-to-r from-orange-400 to-yellow-400 cursor-pointer transition duration-500 ease-in-out  hover:scale-110"
+            className="flex flex-col py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl shadow-xl bg-gradient-to-r from-orange-400 to-yellow-400 cursor-pointer transition duration-500 ease-in-out  hover:scale-110"
           >
-            <h1 className="text-3xl">{title}</h1>
+            <div className="text-3xl">{title}</div>
+            <div className=" self-end">{ts}</div>
             <p className="text-lg whitespace-pre-wrap h-18 line-clamp-3">
               {text}
             </p>

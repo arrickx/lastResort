@@ -38,8 +38,6 @@ export function EditPost(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log('title ->', title);
-    // console.log('text ->', text);
     if (title && text) {
       const editPostRequest = {
         method: "PATCH",
@@ -55,24 +53,20 @@ export function EditPost(props) {
         }),
       };
 
-      // console.log(editPostRequest);
-
       fetch(`/api/feed/${post_id}`, editPostRequest).then((response) => {
         if (response.status === 401) navigate("/");
         if (response.status === 200) {
-          console.log("edit post success!"); // need to route to another page
           navigate("/");
-        } else {
-          alertBox("please input title or story.");
-        }
+        } 
       });
+    } else {
+      alertBox("please input title or story.");
     }
   };
 
   return (
     <div>
-      <h1>Edit</h1>
-      {isAlertVisible && <h3>{msg}</h3>}
+      {isAlertVisible && <h3 className="text-center text-2xl font-bold text-orange-300">{msg}</h3>}
       <form className="text-xl" onSubmit={handleSubmit}>
         <input
           type="text"

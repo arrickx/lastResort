@@ -41,12 +41,10 @@ export function Page(props) {
   }
 
   return (
-    <div>
-      <h1>Post {_id}</h1>
-      <h1>{title}</h1>
-      <h2>{text}</h2>
-      <h2>creator: {user_id}</h2>
-      <h2>current user:{currentUserId}</h2>
+    <div className="text-xl">
+      
+        <h1 className="my-2 mx-4 mt-6 text-3xl text-orange-400" >{title}</h1>
+        <h2 className="my-4 mx-4 whitespace-pre-wrap text-orange-400">{text}</h2>
 
       {user_id === currentUserId[0] && (
         <div>
