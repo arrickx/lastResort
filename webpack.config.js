@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -6,7 +6,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./client/index.js",
   output: {
-    publicPath: '/',
+    publicPath: "/",
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
   },
@@ -25,13 +25,24 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(jpg|png)$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
         },
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "svg-url-loader",
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
       },
     ],
   },
@@ -45,11 +56,11 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     static: {
-      directory: path.join(__dirname, 'build'),
-      publicPath: '/build',
+      directory: path.join(__dirname, "build"),
+      publicPath: "/build",
     },
     proxy: {
-      '/api': 'http://localhost:3000',
+      "/api": "http://localhost:3000",
     },
   },
 };

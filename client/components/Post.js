@@ -54,7 +54,7 @@ export function Post() {
             }}
             className="flex flex-col py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl 
             shadow-xl bg-gradient-to-r from-orange-400 to-yellow-400 cursor-pointer transition 
-            duration-500 ease-in-out  hover:scale-110"
+            duration-500 ease-in-out  hover:scale-110 "
           >
             <div className="text-3xl">{title}</div>
             <div className=" self-end">{ts}</div>
@@ -69,7 +69,7 @@ export function Post() {
 
   return (
     <div>
-      <h1 className="text-4xl text-center text-orange-400 mb-3">Post</h1>
+      <h1 className="text-4xl text-center text-orange-400 mb-3 font-mono">Post</h1>
 
       <animated.div style={styles}>{allPosts}</animated.div>
       <animated.div style={popupStyles}>
