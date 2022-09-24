@@ -16,7 +16,10 @@ export function Post() {
   }, []);
 
   const allPosts = state.map((el, i) => {
-    const { _id, title, text } = el;
+    const { _id, title, text, create_time } = el;
+
+    const ts = new Date(create_time).toLocaleString('en-US', {hour: '2-digit', minute:'2-digit'}) ;
+
     return (
       <div key={_id}>
         <div className="flex flex-col justify-center items-center py-4 ">
@@ -27,8 +30,9 @@ export function Post() {
             }}
             className="flex flex-col justify-center py-4 w-3/5 max-w-2xl px-8 mx-auto text-white rounded-xl shadow-xl bg-orange-400 cursor-pointer"
           >
-            <h1 className=" text-3xl">{title}</h1>
-            <p className=" whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
+            <h1 className="text-3xl">{title}</h1>
+            {/* <h1>{ts}</h1> */}
+            <p className="text-lg whitespace-pre-wrap h-18 line-clamp-3">{text}</p>
           </div>
         </div>
       </div>
@@ -37,7 +41,7 @@ export function Post() {
 
   return (
     <div>
-      <h1 className="text-4xl text-center text-orange-400">Post</h1>
+      <h1 className="text-4xl text-center text-orange-400 mb-3">Post</h1>
 
       {/* loading status */}
       {/* {!state[0] && 

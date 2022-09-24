@@ -50,7 +50,7 @@ export function NewPost(props) {
   return (
     <div>
       {isAlertVisible && (
-        <h3 className="text-center font-bold text-orange-300">{msg}</h3>
+        <h3 className="text-center text-2xl font-bold text-orange-300">{msg}</h3>
       )}
       <form
         onSubmit={handleSubmit}
@@ -58,7 +58,7 @@ export function NewPost(props) {
       >
         <input
           autoFocus
-          className="border-b-2 w-3/5 border-b-orange-300 outline-none my-2 mt-10"
+          className="border-b-2 w-4/5 text-2xl border-b-orange-300 outline-none my-2 mt-10 text-orange-300 placeholder-orange-300"
           type="text"
           placeholder="title"
           value={title}
@@ -66,7 +66,7 @@ export function NewPost(props) {
         />
         <br />
         <textarea
-        className="caret-orange-400 w-3/5 h-40 rounded-lg border border-orange-300 focus:outline-orange-400"
+        className="caret-orange-400 px-3 py-1.5 w-4/5 h-40 rounded-lg border-2 border-orange-300 focus:outline-orange-300 text-orange-300 placeholder-orange-300"
           type="text"
           placeholder="say something..."
           value={text}
@@ -74,7 +74,7 @@ export function NewPost(props) {
         />
         <br />
         <input
-          className="my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
+          className="my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 shadow-md text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
           type="submit"
           value="Post"
         />

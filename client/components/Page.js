@@ -45,13 +45,13 @@ export function Page(props) {
       {user_id === currentUserId[0] && (
         <div>
           <button
-            className="shadow-md my-4 mx-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
+            className="shadow-md my-4 mx-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
             onClick={() => setButtonPopup(true)}
           >
             edit
           </button>
           <button
-            className="shadow-md my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
+            className="shadow-md my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500 focus:outline-none"
             onClick={pageDelete}
           >
             delete

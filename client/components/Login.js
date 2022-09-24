@@ -59,7 +59,7 @@ export function Login() {
           <label>
             <input
               autoFocus
-              className="text-center border-b-2 border-b-orange-300 outline-none my-4 mt-10"
+              className="text-center border-b-2 border-b-orange-300 outline-none my-4 mt-10 text-orange-300 placeholder-orange-300"
               type="text"
               placeholder="username"
               autoComplete="on"
@@ -68,7 +68,7 @@ export function Login() {
             />
             <br />
             <input
-              className="text-center border-b-2 border-b-orange-300 outline-none my-4"
+              className="text-center border-b-2 border-b-orange-300 outline-none my-4 text-orange-300 placeholder-orange-300"
               type="password"
               placeholder="password"
               autoComplete="on"
@@ -78,7 +78,7 @@ export function Login() {
             <br />
           </label>
           <input
-            className="shadow-md my-4 text-center items-center justify-center rounded-xl border border-transparent bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
+            className="shadow-md my-4 text-center items-center justify-center rounded-xl border border-transparent focus:outline-none bg-orange-400 px-4 py-2 text-base font-medium text-white shadow-s hover:bg-orange-500"
             type="submit"
             value="Login"
           />
