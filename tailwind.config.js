@@ -7,5 +7,5 @@ module.exports = {
           },
       },
   },
-  plugins: [require('@tailwindcss/line-clamp'),require('tailwind-scrollbar')({ nocompatible: true }),],
+  plugins: [require('tailwind-scrollbar')({ nocompatible: true }),],
 };
