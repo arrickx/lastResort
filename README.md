@@ -1,9 +1,4 @@
 <div align="center">
-  <style>
-    img {
-      border-radius: 20%;
-    }
-  </style>
   <a href="https://github.com/arrickx/lastResort">
     <img src="https://github.com/arrickx/lastResort/blob/master/client/src/logo.png?raw=true" alt="Logo" width="80" height="80">
   </a>
