@@ -31,6 +31,38 @@
 * ![Express.js]
 * ![Webpack]
 
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+
+### Installation
+
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Create your own `.env` file in the root path
+   ```js
+   NODE_ENV=development
+   PG_URI=postgres:"POSTGRES LINK"
+   PRIVATE_KEY="YOUR POSTGRES PRIVATE KEY"
+   ```
+4. Run command to start the project  
+   ```sh
+   npm run dev
+   ```
+
+
+
 <!-- MARKDOWN LINKS & IMAGES -->
 [Index.gif]: assets/index.gif
 [React]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
