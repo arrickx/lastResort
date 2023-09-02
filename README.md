@@ -54,9 +54,12 @@ To get a local copy up and running follow these simple example steps.
    ```js
    NODE_ENV=development
    PG_URI=postgres:"POSTGRES LINK"
-   PRIVATE_KEY="YOUR POSTGRES PRIVATE KEY"
+   PRIVATE_KEY="JWT PRIVATE KEY"
    ```
-4. Run command to start the project  
+
+4. Initialize the sql by running the command in [`initialTable`](https://github.com/arrickx/lastResort/blob/master/initialTable) in psql.
+   
+5. Run command to start the project  
    ```sh
    npm run dev
    ```

@@ -7,7 +7,8 @@ password varchar NOT NULL CHECK (password <> '')
 CREATE TABLE public."post"(
 _id SERIAL PRIMARY KEY NOT NULL,
 title varchar NOT NULL CHECK (title <> ''),
-post_text varchar NOT NULL CHECK (post_text <> ''),
+text varchar NOT NULL CHECK (text <> ''),
 user_id varchar NOT NULL CHECK (user_id <> ''),
-likes integer DEFAULT 0
+likes integer DEFAULT 0,
+create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 )
