@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useSpring, animated } from "@react-spring/web";
 import Cookies from "js-cookie";
 import logo from "../src/logo.png";
-import Popup from "./popup";
+import Popup from "./Popup";
 import {NewPost} from "./NewPost"
 
 

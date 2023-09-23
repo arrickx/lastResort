@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import Popup from "./popup";
+import Popup from "./Popup";
 import { Page } from "./Page";
 
 export function Post() {

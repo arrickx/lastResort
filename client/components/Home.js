@@ -6,7 +6,7 @@ import { useSpring, animated } from "@react-spring/web";
 import logo from "../src/logo.png";
 import backgroundImg from "../src/background.png";
 import backgroundSvg from "../src/background.svg"
-import Popup from "./popup";
+import Popup from "./Popup";
 
 export function Home() {
   const [buttonPopup, setButtonPopup] = useState(false);
